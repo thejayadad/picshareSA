@@ -3,6 +3,8 @@ import UploadForm from '../Form/UploadForm/UploadForm'
 import UploadCard from '../Card/UploadCard'
 import React, { useMemo, useState } from 'react'
 import { toast } from 'react-toastify';
+import Loading from '../Loading';
+import {uploadPhotos} from "@/lib/photoActions"
 
 const Upload = () => {
     const [files, setFiles] = useState([])
@@ -29,7 +31,7 @@ const Upload = () => {
     
         setLoading(true)
         const res = await uploadPhotos(formData, newFiles);
-        setLoading(false)
+        setLoading(false)                                                                                   
     
         if(res?.errMsg)
           toast.error(res.errMsg);
@@ -66,7 +68,8 @@ const Upload = () => {
                 : 'Submit to Thejayadad'
         }
       </button>
-    
+      { loading ? <Loading /> : null }
+
     </div>
   )
 }
