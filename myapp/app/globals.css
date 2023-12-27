@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  overflow-x: hidden;
+}
+@layer utilities {
+  .links{
+    @apply text-gray-600 relative ml-2 font-mono font-bold tracking-[1px] hover:text-gray-400
+  }
+  .links::after{
+    @apply content-[''] bg-purple-500 absolute h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl duration-300
+  }
+  .links:hover::after{
+    @apply w-[100%]
+  }
+  .seperator{
+    @apply border rounded-2xl mt-6 mb-6 bg-purple-500 w-full
+  }
+  .adjustment{
+    @apply cursor-pointer hover:translate-y-[-3px] transition-transform duration-300
+  }
+ 
+}
